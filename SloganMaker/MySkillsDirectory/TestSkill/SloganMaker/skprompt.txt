@@ -1,3 +1,1 @@
-﻿Write me a marketing slogan for my {{$INPUT}} in New 
-York City with a focus on how affordable we are without 
-sacrificing quality.
+﻿为我在纽约的{{$INPUT}}写一个营销口号。
