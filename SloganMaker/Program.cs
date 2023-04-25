@@ -13,7 +13,7 @@ class Program
         var sk = Kernel.Builder.Build();
         sk.Config.AddOpenAITextCompletionService(
             "OpenAI_davinci", "text-davinci-003",
-            key);
+            key!);
 
         var skill = sk.ImportSemanticSkillFromDirectory("MySkillsDirectory", "TestSkill");
         var context = new ContextVariables();
