@@ -2,8 +2,6 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/.vs/LearnSk
-/SloganMaker/bin/Debug/net7.0
-/SloganMaker/obj
-/.vs/ProjectEvaluation
-/SummarizeBlurb/bin/Debug/net7.0
+/.vs/*
+*/bin
+*/obj
