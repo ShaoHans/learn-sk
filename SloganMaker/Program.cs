@@ -17,7 +17,7 @@ class Program
 
         var skill = sk.ImportSemanticSkillFromDirectory("MySkillsDirectory", "TestSkill");
         var context = new ContextVariables();
-        context.Set("input", "手机店");
+        context.Set("input", "烧烤店");
 
         var result = await sk.RunAsync(context, skill["SloganMaker"]);
         await Console.Out.WriteLineAsync(result.Result);
