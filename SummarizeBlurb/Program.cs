@@ -1,5 +1,4 @@
 ﻿using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.KernelExtensions;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SemanticFunctions;
 
@@ -87,11 +86,11 @@ internal class Program
 
         var mySummarizeFunction = sk.CreateSemanticFunction(summarizeBlurbFlex, maxTokens: 1000);
 
-        var myOutput = await sk.RunAsync(
-            new ContextVariables(@"24日下午，人民大会堂，在巨幅壁画《江山如此多娇》前，习近平主席分别接受70位驻华大使递交国书，并同他们一一合影。
+        var myOutput = await mySummarizeFunction.InvokeAsync(
+            @"24日下午，人民大会堂，在巨幅壁画《江山如此多娇》前，习近平主席分别接受70位驻华大使递交国书，并同他们一一合影。
             面对各位使节，习近平主席指出，中方愿同国际社会一道，推进落实全球发展倡议、全球安全倡议、全球文明倡议，倡导全人类共同价值，促进各国人民相知相亲，共同应对各种全球性挑战，朝着构建人类命运共同体方向不断迈进。
-            应邀对俄罗斯进行国事访问，同来华访问的亚洲、欧洲、拉美、非洲等多位政要会谈会见，首次提出全球文明倡议，推动国际和地区热点问题解决……2023年春季，高潮迭起的中国元首外交，持续吸引着世界的目光。在习近平主席引领下，中国特色大国外交在新征程上扬帆奋进，标注出中国与世界交往互动新高度。"),
-            mySummarizeFunction);
+            应邀对俄罗斯进行国事访问，同来华访问的亚洲、欧洲、拉美、非洲等多位政要会谈会见，首次提出全球文明倡议，推动国际和地区热点问题解决……2023年春季，高潮迭起的中国元首外交，持续吸引着世界的目光。在习近平主席引领下，中国特色大国外交在新征程上扬帆奋进，标注出中国与世界交往互动新高度。"
+            );
 
         Console.WriteLine(myOutput);
     }
