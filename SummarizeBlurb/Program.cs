@@ -1,6 +1,7 @@
 ﻿using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SemanticFunctions;
+using Microsoft.SemanticKernel.Skills.OpenAPI.Authentication;
 
 namespace SummarizeBlurb;
 
@@ -13,8 +14,12 @@ internal class Program
 
         var sk = Kernel.Builder.Build();
         sk.Config.AddOpenAITextCompletionService("OpenAI_davinci", "text-davinci-003", key!);
+        var authenticationProvider = new BearerAuthenticationProvider(() => { return Task.FromResult("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"); });
+        //var skill2 = await sk.ImportOpenApiSkillFromFileAsync(
+        //    "GitHubSkill",
+        //    "MySkills/openapi.json",
+        //    authenticationProvider.AuthenticateRequestAsync);
 
-        
         var context = new ContextVariables();
         context.Set("input", @"从“五一”的预订量看我们有95%左右的入住预订率，随着“五一”节临近，商务客比例在往下走，
                 家庭出行、旅游观光的客人比例在上涨。还有个客群变化亮点是文艺活动增多，一有文艺节演出，
@@ -22,11 +27,12 @@ internal class Program
                 除了市区酒店，也有不少消费者会选择位于上海市郊的特色民宿，希望在繁忙的日常节奏里找寻自然生活的轻松闲适。
                 记者从上海市统计局了解到，今年一季度上海服务零售实现较快增长，1-3月，住宿和餐饮业实现零售额362.54亿元，增长14.3%。");
 
+        //var skill = await sk.ImportOpenApiSkillFromDirectoryAsync("MySkills", "TestSkill", authenticationProvider.AuthenticateRequestAsync);
         var skill = sk.ImportSemanticSkillFromDirectory("MySkills", "TestSkill");
         var skContext  = await sk.RunAsync(context, skill["Summarize"]);
         Console.WriteLine(skContext.Result);
-        
 
+        //sk.RegisterOpenApiSkillAsync()
         await Test1(sk);
         await Test2(sk);
     }
@@ -84,6 +90,7 @@ internal class Program
             ---结束内容---
             """;
 
+        
         var mySummarizeFunction = sk.CreateSemanticFunction(summarizeBlurbFlex, maxTokens: 1000);
 
         var myOutput = await mySummarizeFunction.InvokeAsync(

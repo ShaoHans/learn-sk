@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SemanticKernel" Version="0.13.442.1-preview" />
+    <PackageReference Include="Microsoft.SemanticKernel.Skills.OpenAPI" Version="0.13.442.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="MySkills\openapi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="MySkills\TestSkill\Summarize\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
