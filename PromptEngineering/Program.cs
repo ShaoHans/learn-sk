@@ -4,34 +4,48 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        IPromptRunner runner = null;
-        Console.WriteLine("请输入案例索引号：");
-        var index = Console.ReadLine();
-        switch (index)
-        {
-            case "1":
-                runner = new P01_提示分隔符();
-                break;
-            case "2":
-                runner = new P02_结构化输出();
-                break;
-            case "3":
-                runner = new P03_按步骤输出();
-                break;
-            case "4":
-                runner = new P04_少样本提示();
-                break;
-            default:
-                break;
-        }
+        await TestOpenAIServiceAsync();
+    }
 
-        if (runner != null)
+    static Dictionary<int, IPromptRunner> GetRunnerInstances()
+    {
+        var runnerTypes = AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IPromptRunner))));
+
+        var runners = new Dictionary<int, IPromptRunner>();
+        foreach (var type in runnerTypes.OrderBy(t => t.Name))
         {
-            await runner.RunAsync();
+            var index = int.Parse(type.Name.Split('_')[0].Trim('P'));
+            var runner = Activator.CreateInstance(type) as IPromptRunner;
+            runners[index] = runner!;
         }
-        else
+        return runners;
+    }
+
+    static async Task TestOpenAIServiceAsync()
+    {
+        while(true)
         {
-            Console.WriteLine("无效的索引号");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("****************************************************");
+            Console.WriteLine("存在以下OpenAI案例：");
+            var runners = GetRunnerInstances();
+
+            foreach (var item in runners)
+            {
+                Console.WriteLine($"*** {item.Key}：{item.Value.GetType().Name}");
+            }
+
+            Console.WriteLine("请输入案例的索引号（输入不存在的索引号将退出程序）：");
+            int index = int.Parse(Console.ReadLine()!);
+            if (runners.TryGetValue(index, out IPromptRunner runner))
+            {
+                await runner.RunAsync();
+            }
+            else
+            {
+                break;
+            }
         }
     }
 }
