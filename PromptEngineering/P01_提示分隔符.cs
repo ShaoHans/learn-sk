@@ -21,6 +21,6 @@ internal class P01_提示分隔符 : IPromptRunner
         };
 
         var response = await OpenAI.GetTextCompletionAsync(config);
-        Console.WriteLine(response);
+        OpenAI.Output(config, response);
     }
 }

@@ -28,8 +28,6 @@ internal class P03_按步骤输出 : IPromptRunner
         };
 
         var response = await OpenAI.GetTextCompletionAsync(config);
-        Console.WriteLine(config.Template);
-        Console.WriteLine(config.Input);
-        Console.WriteLine(response);
+        OpenAI.Output(config, response);
     }
 }

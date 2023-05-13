@@ -27,4 +27,11 @@ public class OpenAI
         var func = kernel.RegisterSemanticFunction(config.SkillName, config.FunctionName, funcConfig);
         return await kernel.RunAsync(config.Input, func);
     }
+
+    public static void Output(OpenAIConfig config, SKContext context)
+    {
+        Console.WriteLine(config.Template);
+        Console.WriteLine(config.Input);
+        Console.WriteLine(context);
+    }
 }
