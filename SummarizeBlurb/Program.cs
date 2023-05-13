@@ -41,12 +41,11 @@ internal class Program
         var myPromptConfig = new PromptTemplateConfig
         {
             Description = "对输入的内容进行简短总结.",
-            Completion =
-                        {
+            Completion = {
                             MaxTokens = 1000,
                             Temperature = 0.2,
                             TopP = 0.5,
-                        }
+                         }
         };
 
         var myPromptTemplate = new PromptTemplate(
