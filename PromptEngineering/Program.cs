@@ -15,6 +15,9 @@ internal class Program
             case "2":
                 runner = new P02_结构化输出();
                 break;
+            case "3":
+                runner = new P03_按步骤输出();
+                break;
             default:
                 break;
         }
