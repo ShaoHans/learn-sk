@@ -30,8 +30,16 @@ public class OpenAI
 
     public static void Output(OpenAIConfig config, SKContext context)
     {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Prompt：");
         Console.WriteLine(config.Template);
+        Console.WriteLine("============================================");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Input：");
         Console.WriteLine(config.Input);
+        Console.WriteLine("============================================");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Output：");
         Console.WriteLine(context);
     }
 }

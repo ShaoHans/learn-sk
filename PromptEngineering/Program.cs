@@ -18,6 +18,9 @@ internal class Program
             case "3":
                 runner = new P03_按步骤输出();
                 break;
+            case "4":
+                runner = new P04_少样本提示();
+                break;
             default:
                 break;
         }
