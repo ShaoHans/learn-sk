@@ -1,4 +1,6 @@
-﻿using Microsoft.SemanticKernel;
+﻿using Common;
+
+using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SemanticFunctions;
 
@@ -8,8 +10,7 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        await Console.Out.WriteLineAsync("please input your OpenAI key ...");
-        var key = Console.ReadLine();
+        var key = OpenAI.GetApiKey();
 
         var sk = Kernel.Builder.Build();
         sk.Config.AddOpenAITextCompletionService( "text-davinci-003", key!);

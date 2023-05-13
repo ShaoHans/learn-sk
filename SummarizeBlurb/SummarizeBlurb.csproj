@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="MySkills\openapi.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
