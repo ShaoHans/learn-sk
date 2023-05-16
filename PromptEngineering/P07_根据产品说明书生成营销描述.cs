@@ -8,7 +8,9 @@ public class P07_根据产品说明书生成营销描述 : IPromptRunner
     {
         var config = new OpenAIConfig
         {
-            Template = @"请根据【】括号中的产品说明书帮助营销团队生成简短的产品营销描述，描述内容最好是60个字符以内。
+            Template = @"请根据【】括号中的产品说明书帮助营销团队生成简短的产品营销描述，
+需要突出它的高配置以及性能表现，
+描述内容最好是60个字符以内。
 产品说明书：【{{$Input}}】",
 
             Input = @"产品名称：Xiaomi 13 Ultra
