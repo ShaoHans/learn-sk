@@ -37,10 +37,12 @@ internal class Program
             }
 
             Console.WriteLine("请输入案例的索引号（输入不存在的索引号将退出程序）：");
-            int index = int.Parse(Console.ReadLine()!);
-            if (runners.TryGetValue(index, out IPromptRunner runner))
+            if(int.TryParse(Console.ReadLine()!,out int index))
             {
-                await runner.RunAsync();
+                if (runners.TryGetValue(index, out IPromptRunner runner))
+                {
+                    await runner.RunAsync();
+                }
             }
             else
             {
