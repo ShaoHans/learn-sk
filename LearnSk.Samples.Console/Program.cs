@@ -17,7 +17,6 @@ builder.Configuration.AddUserSecrets<Program>();
 // 访问AzureOpenAI服务有可能遇到证书问题，需要使用自己注入的HttpClient()避免证书问题
 builder.Services.AddHttpClient();
 builder.Services.AddAzureOpenAI();
-
 builder.Services.AddKeyedServices<ISampleService>(Assembly.GetExecutingAssembly());
 
 var host = builder.Build();
