@@ -1,7 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using LearnSk.Samples;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.SemanticKernel;
+
+using System.Reflection;
 
 var builder = Host.CreateApplicationBuilder(args);
 // 由于Azure OpenAI的配置信息属于机密，在开源项目中往往使用机密文件管理，
@@ -15,10 +18,11 @@ builder.Configuration.AddUserSecrets<Program>();
 builder.Services.AddHttpClient();
 builder.Services.AddAzureOpenAI();
 
+builder.Services.AddKeyedServices<ISampleService>(Assembly.GetExecutingAssembly());
+
 var host = builder.Build();
 
-var kernel = host.Services.GetRequiredService<Kernel>();
-var result = await kernel.InvokePromptAsync("天空是什么颜色");
-Console.WriteLine(result);
+var sampleService = host.Services.GetRequiredKeyedService<ISampleService>(nameof(S01_GettingStarted));
+await sampleService.RunAsync();
 
 await host.RunAsync();
