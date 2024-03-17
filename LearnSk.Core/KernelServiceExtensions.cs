@@ -12,7 +12,6 @@ public static class KernelServiceExtensions
     {
         var configuration = services.GetConfiguration();
         var cfg = configuration.GetSection("AzureOpenAI").Get<AzureOpenAIConfiguration>();
-
         
         var kernelBuilder = services.AddKernel();
         kernelBuilder.Services.AddAzureOpenAITextGeneration(

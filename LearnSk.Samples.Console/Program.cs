@@ -4,7 +4,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.SemanticKernel;
 
 var builder = Host.CreateApplicationBuilder(args);
-// 由于Azure OpenAI的配置信息属于机密，在开源项目中往往使用机密文件secrets.json管理，它会覆盖appsettings.json文件中的配置
+// 由于Azure OpenAI的配置信息属于机密，在开源项目中往往使用机密文件管理，
+// 它会在本地的某个目录下生成secrets.json，你只需要把机密的配置信息写在这个文件中，
+// 它会覆盖appsettings.json文件中相同key的配置
 // 参考文件：https://zhuanlan.zhihu.com/p/252241845
 // secrets.json文件的目录：C:\Users\[用户名]\AppData\Roaming\Microsoft\UserSecrets\[UserSecretsId]
 builder.Configuration.AddUserSecrets<Program>();
