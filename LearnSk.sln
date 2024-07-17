@@ -3,31 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnSk.Core", "LearnSk.Core\LearnSk.Core.csproj", "{ADDFDA64-D110-4496-9A0D-C096C2F5A3CE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnSk.LLM.Service", "LearnSk.LLM.Service\LearnSk.LLM.Service.csproj", "{24B340ED-CE9D-4668-879D-7D09211A70C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnSk.Samples.Console", "LearnSk.Samples.Console\LearnSk.Samples.Console.csproj", "{D946E2C9-1CEF-49F1-946E-F1CD0BD95423}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ADDFDA64-D110-4496-9A0D-C096C2F5A3CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADDFDA64-D110-4496-9A0D-C096C2F5A3CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADDFDA64-D110-4496-9A0D-C096C2F5A3CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADDFDA64-D110-4496-9A0D-C096C2F5A3CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24B340ED-CE9D-4668-879D-7D09211A70C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24B340ED-CE9D-4668-879D-7D09211A70C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24B340ED-CE9D-4668-879D-7D09211A70C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24B340ED-CE9D-4668-879D-7D09211A70C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D946E2C9-1CEF-49F1-946E-F1CD0BD95423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D946E2C9-1CEF-49F1-946E-F1CD0BD95423}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D946E2C9-1CEF-49F1-946E-F1CD0BD95423}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D946E2C9-1CEF-49F1-946E-F1CD0BD95423}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
